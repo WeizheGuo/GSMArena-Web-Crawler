@@ -20,7 +20,7 @@ class Gsmarena():
         self.phones_brands = []
         self.url = 'https://www.gsmarena.com/' # GSMArena website url
         self.new_folder_name = 'GSMArenaDataset' # Folder name on which files going to save.
-        self.absolute_path = os.popen('pwd').read().strip() + '/' + self.new_folder_name  # It create the absolute path of the GSMArenaDataset folder.
+        self.absolute_path = os.popen('cd').read().strip() + '/' + self.new_folder_name  # It create the absolute path of the GSMArenaDataset folder.
 
     # This function crawl the html code of the requested URL.
     def crawl_html_page(self, sub_url):
@@ -249,10 +249,14 @@ def filter_csv():
 #     print("File has been stopped due to KeyBoard Interruption.")
 
 # main function
-user_option = input("Enter 1 or 2 to choose modes: \n 1. Output web crawler data to csv files. \n 2. Search for devices in existing csv files. \n 3. Filter key specs and transpose a csv file. \n")
-if user_option == '1':
-    output_csv()
-elif user_option == '2':
-    search_csv()
-elif user_option == '3':
-    filter_csv()
+def main(): 
+    user_option = input("Enter 1 or 2 to choose modes: \n 1. Output web crawler data to csv files. \n 2. Search for devices in existing csv files. \n 3. Filter key specs and transpose a csv file. \n")
+    if user_option == '1':
+        output_csv()
+    elif user_option == '2':
+        search_csv()
+    elif user_option == '3':
+        filter_csv()
+
+while True:
+    main()
